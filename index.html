@@ -1,0 +1,72 @@
+<html>
+<head>
+	<style>
+	#box{
+		border:1px solid black;
+		background-color:#eee;
+		padding:15px;
+		width:150px;
+		margin-left:250px;
+		margin-top:209px;
+	}
+	#box2{
+		border:1px solid black;
+		background-color:#eee;
+		padding:15px;
+		width:150px;
+		margin-left:348px;
+		margin-top:111px;
+	}
+	</style>
+</head>
+<body>
+	<form id='box' onsubmit='return false;'>
+		<label>Nom</label>
+		<input /> <br/>
+		<label>Pseudo</label>
+		<input /><br />
+		<label>Pass</label>
+		<input /><br />
+		<input type='submit' value='Enable loader 1'/>
+	</form>
+
+
+	<form id='box2' onsubmit='return false;'>
+		<label>Nom</label>
+		<input /> <br/>
+		<label>Pseudo</label>
+		<input /><br />
+		<label>Pass</label>
+		<input /><br />
+		<input type='submit' value='Enable loader 2'/>
+	</form>
+
+	<input id="disable1" type="button" value='Disable loader 1'/>
+	<input id="disable2" type="button" value='Disable loader 2'/>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="formloader.js"></script>
+	<script>
+	jQuery(document).ready(function($){
+		$('#box').live('submit',function(e){
+			e.preventDefault();
+			$(this).formloader(true,{image:'./loading.gif', css : {'background-color':'#f00', opacity : 0.7}});
+			return false;
+		});
+		
+		$('#box2').live('submit',function(e){
+			e.preventDefault();
+			$(this).formloader(true,{image:'./myloader.gif'});
+			return false;
+		});
+		
+		$('#disable1').live('click',function(e){
+			$('#box').formloader(false);
+		});
+		$('#disable2').live('click',function(e){
+			$('#box2').formloader(false);
+		});
+	});
+	</script>
+</body>
+</html>
